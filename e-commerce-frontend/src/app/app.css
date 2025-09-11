@@ -1,0 +1,27 @@
+/* Hide Angular starter placeholder to show our routed pages */
+.main { display: none; }
+
+/* Basic global styles for modern, clean look */
+:host, body {
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+a { color: #2563eb; }
+
+/* Layout */
+.site-header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(8px); background: rgba(248, 250, 252, 0.85); border-bottom: 1px solid #e5e7eb; }
+.nav { max-width: 1100px; margin: 0 auto; height: 56px; display: flex; align-items: center; gap: 16px; padding: 0 16px; }
+.brand { font-weight: 700; letter-spacing: -0.02em; color: #0f172a; text-decoration: none; }
+.spacer { flex: 1; }
+.nav-link { color: #0f172a; text-decoration: none; padding: 8px 10px; border-radius: 8px; border: 1px solid transparent; }
+.nav-link:hover { background: #f1f5f9; }
+.nav-link.primary { background: #0f172a; color: #fff; border-color: #1f2937; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+.site-footer { border-top: 1px solid #e5e7eb; padding: 16px; margin-top: 24px; background: #f8fafc; }
+.foot-inner { max-width: 1100px; margin: 0 auto; color: #475569; display: flex; justify-content: space-between; align-items: center; }
+.muted { color: #64748b; }

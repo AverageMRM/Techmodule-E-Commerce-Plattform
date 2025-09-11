@@ -329,13 +329,25 @@
   </div>
 </main>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<header class="site-header" role="banner">
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a class="brand" routerLink="/">Techmodule</a>
+    <div class="spacer"></div>
+    <a routerLink="/" class="nav-link">Home</a>
+    <a routerLink="/cart" class="nav-link">Warenkorb</a>
+    <a routerLink="/checkout" class="nav-link">Kasse</a>
+    <a routerLink="/login" class="nav-link">Login</a>
+    <a routerLink="/register" class="nav-link primary">Registrieren</a>
+  </nav>
+</header>
 
+<main class="container" role="main">
+  <router-outlet />
+</main>
 
-<router-outlet />
+<footer class="site-footer" role="contentinfo">
+  <div class="foot-inner">
+    <span>© 2025 Techmodule Shop</span>
+    <span class="muted">CHF Preise • de-CH</span>
+  </div>
+</footer>
