@@ -6,5 +6,6 @@ export const environment = {
   apiBaseUrl: '/api',
   locale: 'de-CH',
   currency: 'CHF',
-  stripePublishableKey: 'pk_test_1234567890'
+  stripePublishableKey: 'pk_test_1234567890',
+  googleClientId: '' // optional: set to enable real Google Identity in frontend
 };

@@ -17,6 +17,13 @@ import { loadStripe, Stripe, StripeCardElement, StripeElements } from '@stripe/s
       Gesamtbetrag: <strong>{{ totalCents/100 | currency:'CHF':'symbol':'1.2-2':'de-CH' }}</strong>
     </div>
 
+    <div class="overview" *ngIf="items.length > 0">
+      <div class="ov-row" *ngFor="let it of items">
+        <span class="ov-title">{{ it.product.title }} × {{ it.qty }}</span>
+        <span class="ov-line">{{ ((it.product.priceCents||0)*it.qty)/100 | currency:'CHF':'symbol':'1.2-2':'de-CH' }}</span>
+      </div>
+    </div>
+
     <div class="card-box">
       <label for="card-element">Kartendaten</label>
       <div id="card-element" class="card-element"></div>
@@ -32,10 +39,13 @@ import { loadStripe, Stripe, StripeCardElement, StripeElements } from '@stripe/s
   </section>
   `,
   styles: [`
-    .checkout { max-width: 520px; margin: 32px auto; background:#fff; border:1px solid #eee; border-radius:12px; padding:24px; }
-    .summary { margin-bottom: 16px; font-size: 16px; }
+    .checkout { max-width: 560px; margin: 32px auto; background:#fff; border:1px solid #eee; border-radius:12px; padding:24px; }
+    .summary { margin-bottom: 12px; font-size: 16px; }
+    .overview { border:1px solid #e5e7eb; border-radius:8px; background:#f9fafb; padding:12px; display:flex; flex-direction:column; gap:6px; }
+    .ov-row { display:flex; justify-content:space-between; gap:12px; font-size:14px; color:#334155; }
+    .ov-title { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .card-box { margin: 16px 0; display:flex; flex-direction:column; gap:8px; }
-    .card-element { border:1px solid #e5e7eb; padding:12px; border-radius:8px; background:#fff; }
+    .card-element { border:1px solid #e5e7eb; padding:12px; border-radius:8px; background:#fff; width:100%; min-height:44px; display:block; }
     .actions { margin-top: 16px; display:flex; flex-direction:column; gap:8px; }
     .btn { background:#0f172a; color:#fff; border:1px solid #1f2937; padding:10px 16px; border-radius:8px; cursor:pointer; }
     .msg.error { color:#dc2626; }
@@ -47,6 +57,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   processing = false;
   error: string | null = null;
   success = false;
+  items: import('../../services/cart.service').CartItem[] = [];
 
   private stripe: Stripe | null = null;
   private elements: StripeElements | null = null;
@@ -55,6 +66,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   constructor(private api: ApiService, private cart: CartService) {}
 
   async ngOnInit() {
+    this.items = this.cart.getItems();
     this.totalCents = this.cart.totalCents();
     this.stripe = await loadStripe(environment.stripePublishableKey);
     if (!this.stripe) {
@@ -92,6 +104,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
           this.processing = false;
           this.cart.clear();
           this.totalCents = 0;
+          this.items = [];
         } else {
           this.error = 'Zahlung unklar. Bitte Support kontaktieren.';
           this.processing = false;

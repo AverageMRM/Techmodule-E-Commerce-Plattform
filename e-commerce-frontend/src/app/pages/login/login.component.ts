@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +20,7 @@ import { FormsModule } from '@angular/forms';
       </label>
       <button class="btn" type="submit">Einloggen</button>
     </form>
-    <div class="or">oder</div>
-    <a class="btn google" href="http://localhost:8080/oauth2/authorization/google">Mit Google anmelden</a>
+    <div class="error" *ngIf="error">{{ error }}</div>
   </div>
   `,
   styles: [`
@@ -28,15 +29,21 @@ import { FormsModule } from '@angular/forms';
     label { display:flex; flex-direction:column; gap:6px; font-size:14px; color:#374151; }
     input { border:1px solid #e5e7eb; border-radius:8px; padding:10px 12px; }
     .btn { background:#0f172a; color:#fff; border:1px solid #1f2937; padding:10px 16px; border-radius:8px; cursor:pointer; }
-    .btn.google { background:#fff; color:#111; border-color:#e5e7eb; }
-    .or { text-align:center; color:#6b7280; margin: 12px 0; }
+    .error { color:#dc2626; margin-top: 12px; }
   `]
 })
 export class LoginComponent {
   email = '';
   password = '';
+  error: string | null = null;
+  constructor(private auth: AuthService, private router: Router) {}
   onSubmit() {
-    // Placeholder: real auth to be implemented (JWT).
-    alert('Login demo – bitte Google verwenden.');
+    this.error = null;
+    const ok = this.auth.login(this.email, this.password);
+    if (ok) {
+      this.router.navigateByUrl('/');
+    } else {
+      this.error = 'Bitte zuerst registrieren';
+    }
   }
 }

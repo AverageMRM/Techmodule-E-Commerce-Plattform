@@ -336,8 +336,14 @@
     <a routerLink="/" class="nav-link">Home</a>
     <a routerLink="/cart" class="nav-link">Warenkorb</a>
     <a routerLink="/checkout" class="nav-link">Kasse</a>
-    <a routerLink="/login" class="nav-link">Login</a>
-    <a routerLink="/register" class="nav-link primary">Registrieren</a>
+    <ng-container *ngIf="!auth.user; else userBox">
+      <a routerLink="/login" class="nav-link">Login</a>
+      <a routerLink="/register" class="nav-link primary">Registrieren</a>
+    </ng-container>
+    <ng-template #userBox>
+      <span class="nav-user">{{ auth.user?.email }}</span>
+      <button class="nav-link" (click)="logout()">Logout</button>
+    </ng-template>
   </nav>
 </header>
 
