@@ -1,0 +1,25 @@
+<section class="cart">
+  <h2>Warenkorb</h2>
+  <div *ngIf="items.length === 0" class="empty">Dein Warenkorb ist leer.</div>
+  <div class="list" *ngIf="items.length > 0">
+    <div class="row" *ngFor="let it of items">
+      <div class="title">{{ it.product.title }}</div>
+      <div class="qty">
+        <button type="button" (click)="decrement(it.product.id)">−</button>
+        <span>{{ it.qty }}</span>
+        <button type="button" (click)="increment(it.product.id)">+</button>
+      </div>
+      <div class="line">
+        {{ ((it.product.priceCents || 0) * it.qty) / 100
+        | currency:(it.product.currency || 'CHF'):'symbol':'1.2-2':'de-CH' }}
+      </div>
+      <button type="button" class="remove" (click)="remove(it.product.id)">Entfernen</button>
+    </div>
+    <div class="total">
+      Total: <strong>{{ totalCents() / 100 | currency:'CHF':'symbol':'1.2-2':'de-CH' }}</strong>
+    </div>
+    <div class="actions">
+      <a class="btn" routerLink="/checkout">Zur Kasse</a>
+    </div>
+  </div>
+</section>

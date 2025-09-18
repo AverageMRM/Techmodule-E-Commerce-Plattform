@@ -25,15 +25,9 @@ public class SecurityConfig {
                                 "/actuator/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui.html",
-                                "/swagger-ui/**",
-                                "/oauth2/**",
-                                "/login/**"
+                                "/swagger-ui/**"
                         ).permitAll()
                         .anyRequest().permitAll()
-                )
-                .oauth2Login(oauth -> oauth
-                        .defaultSuccessUrl("http://localhost:4200/", true)
-                        .failureUrl("http://localhost:4200/login?error=oauth2")
                 )
                 .logout(logout -> logout
                         .logoutSuccessUrl("http://localhost:4200/")
@@ -46,7 +40,8 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:4200",
-                "http://127.0.0.1:4200"
+                "http://127.0.0.1:4200",
+                "http://web:4200"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));

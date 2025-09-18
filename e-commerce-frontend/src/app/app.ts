@@ -8,7 +8,7 @@ import { AuthService } from './services/auth.service';
   imports: [CommonModule, RouterOutlet, RouterLink],
   templateUrl: './app.html',
   standalone: true,
-  styleUrl: './app.css'
+  styleUrls: ['./app.scss']
 })
 export class App {
   protected readonly title = signal('e-commerce-frontend');

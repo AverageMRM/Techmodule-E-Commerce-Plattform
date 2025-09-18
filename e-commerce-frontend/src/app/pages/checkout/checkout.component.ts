@@ -4,53 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { CartService } from '../../services/cart.service';
 import { environment } from '../../../environments/environment';
-import { loadStripe, Stripe, StripeCardElement, StripeElements } from '@stripe/stripe-js';
+import { loadStripe, Stripe, StripeElements, StripeCardNumberElement, StripeCardExpiryElement, StripeCardCvcElement } from '@stripe/stripe-js';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: `
-  <section class="checkout">
-    <h2>Zahlung</h2>
-    <div class="summary">
-      Gesamtbetrag: <strong>{{ totalCents/100 | currency:'CHF':'symbol':'1.2-2':'de-CH' }}</strong>
-    </div>
-
-    <div class="overview" *ngIf="items.length > 0">
-      <div class="ov-row" *ngFor="let it of items">
-        <span class="ov-title">{{ it.product.title }} × {{ it.qty }}</span>
-        <span class="ov-line">{{ ((it.product.priceCents||0)*it.qty)/100 | currency:'CHF':'symbol':'1.2-2':'de-CH' }}</span>
-      </div>
-    </div>
-
-    <div class="card-box">
-      <label for="card-element">Kartendaten</label>
-      <div id="card-element" class="card-element"></div>
-    </div>
-
-    <div class="actions">
-      <button class="btn" [disabled]="processing || totalCents<=0" (click)="pay()">
-        {{ processing ? 'Verarbeite…' : 'Mit Karte zahlen' }}
-      </button>
-      <div class="msg error" *ngIf="error">{{ error }}</div>
-      <div class="msg success" *ngIf="success">Zahlung erfolgreich! Danke ✨</div>
-    </div>
-  </section>
-  `,
-  styles: [`
-    .checkout { max-width: 560px; margin: 32px auto; background:#fff; border:1px solid #eee; border-radius:12px; padding:24px; }
-    .summary { margin-bottom: 12px; font-size: 16px; }
-    .overview { border:1px solid #e5e7eb; border-radius:8px; background:#f9fafb; padding:12px; display:flex; flex-direction:column; gap:6px; }
-    .ov-row { display:flex; justify-content:space-between; gap:12px; font-size:14px; color:#334155; }
-    .ov-title { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .card-box { margin: 16px 0; display:flex; flex-direction:column; gap:8px; }
-    .card-element { border:1px solid #e5e7eb; padding:12px; border-radius:8px; background:#fff; width:100%; min-height:44px; display:block; }
-    .actions { margin-top: 16px; display:flex; flex-direction:column; gap:8px; }
-    .btn { background:#0f172a; color:#fff; border:1px solid #1f2937; padding:10px 16px; border-radius:8px; cursor:pointer; }
-    .msg.error { color:#dc2626; }
-    .msg.success { color:#16a34a; }
-  `]
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
   totalCents = 0;
@@ -61,7 +22,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   private stripe: Stripe | null = null;
   private elements: StripeElements | null = null;
-  private card: StripeCardElement | null = null;
+  private cardNum: StripeCardNumberElement | null = null;
+  private cardExp: StripeCardExpiryElement | null = null;
+  private cardCvc: StripeCardCvcElement | null = null;
 
   constructor(private api: ApiService, private cart: CartService) {}
 
@@ -73,17 +36,24 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.error = 'Stripe konnte nicht initialisiert werden.';
       return;
     }
-    this.elements = this.stripe.elements();
-    this.card = this.elements.create('card');
-    this.card.mount('#card-element');
+    this.elements = this.stripe.elements({ locale: 'de' });
+    // Create separate elements for better layout
+    this.cardNum = this.elements.create('cardNumber', { showIcon: true, style: { base: { fontSize: '16px' } } });
+    this.cardExp = this.elements.create('cardExpiry', { style: { base: { fontSize: '16px' } } });
+    this.cardCvc = this.elements.create('cardCvc', { style: { base: { fontSize: '16px' } } });
+    this.cardNum.mount('#card-number');
+    this.cardExp.mount('#card-expiry');
+    this.cardCvc.mount('#card-cvc');
   }
 
   ngOnDestroy() {
-    this.card?.unmount();
+    this.cardNum?.unmount();
+    this.cardExp?.unmount();
+    this.cardCvc?.unmount();
   }
 
   pay() {
-    if (!this.stripe || !this.card) return;
+    if (!this.stripe || !this.cardNum) return;
     this.processing = true;
     this.error = null;
     this.success = false;
@@ -91,7 +61,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.api.createCheckoutSession(this.totalCents, 'CHF').subscribe({
       next: async (res: { clientSecret: string }) => {
         const stripe = this.stripe;
-        const card = this.card;
+        const card = this.cardNum;
         if (!stripe || !card) { this.processing = false; return; }
         const result = await stripe.confirmCardPayment(res.clientSecret, {
           payment_method: { card }
