@@ -1,0 +1,7 @@
+.auth { max-width: 400px; margin: 40px auto; background:#fff; border:1px solid #eee; border-radius: 12px; padding: 24px; }
+.form { display:flex; flex-direction:column; gap:12px; }
+label { display:flex; flex-direction:column; gap:6px; font-size:14px; color:#374151; }
+input { border:1px solid #e5e7eb; border-radius:8px; padding:10px 12px; }
+.or { text-align:center; color:#6b7280; margin: 12px 0; }
+/* Ensure the GIS button takes full width container nicely */
+#googleBtn { display:flex; justify-content:center; }

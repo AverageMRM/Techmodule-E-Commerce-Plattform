@@ -1,0 +1,9 @@
+.cart { max-width: 800px; margin: 32px auto; background:#fff; border:1px solid #eee; border-radius:12px; padding:24px; }
+.row { display:grid; grid-template-columns: 1fr auto auto auto; align-items:center; gap:12px; padding:8px 0; border-bottom:1px solid #f3f4f6; }
+.row:last-child { border-bottom:none; }
+.qty { display:flex; align-items:center; gap:8px; }
+.qty button { width:28px; height:28px; border-radius:6px; border:1px solid #e5e7eb; background:#fff; cursor:pointer; }
+.remove { background:none; border:none; color:#ef4444; cursor:pointer; }
+.total { text-align:right; padding-top:12px; }
+.actions { text-align:right; margin-top:16px; }
+.empty { color:#6b7280; }
