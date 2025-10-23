@@ -1,0 +1,39 @@
+<section class="checkout">
+  <h2>Zahlung</h2>
+  <div class="summary">
+    Gesamtbetrag: <strong>{{ totalCents/100 | currency:'CHF':'symbol':'1.2-2':'de-CH' }}</strong>
+  </div>
+
+  <div class="overview" *ngIf="items.length > 0">
+    <div class="ov-row" *ngFor="let it of items">
+      <span class="ov-title">{{ it.product.title }} × {{ it.qty }}</span>
+      <span class="ov-line">{{ ((it.product.priceCents||0)*it.qty)/100 | currency:'CHF':'symbol':'1.2-2':'de-CH' }}</span>
+    </div>
+  </div>
+
+  <div class="card-box">
+    <label>Kartendaten</label>
+    <div class="card-grid">
+      <div class="field card-number">
+        <span class="label">Kartennummer</span>
+        <div id="card-number" class="card-element"></div>
+      </div>
+      <div class="field">
+        <span class="label">Ablaufdatum</span>
+        <div id="card-expiry" class="card-element"></div>
+      </div>
+      <div class="field">
+        <span class="label">Prüfziffer</span>
+        <div id="card-cvc" class="card-element"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="btn" [disabled]="processing || totalCents<=0" (click)="pay()">
+      {{ processing ? 'Verarbeite…' : 'Mit Karte zahlen' }}
+    </button>
+    <div class="msg error" *ngIf="error">{{ error }}</div>
+    <div class="msg success" *ngIf="success">Zahlung erfolgreich! Danke ✨</div>
+  </div>
+</section>

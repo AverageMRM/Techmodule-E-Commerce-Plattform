@@ -1,0 +1,29 @@
+<section class="hero">
+  <div class="hero-content">
+    <h1>Techmodule Shop</h1>
+    <p>Modern, minimalistisch & clean – entdecke unsere Produkte.</p>
+  </div>
+</section>
+
+<section class="filters">
+  <button *ngFor="let c of categories" (click)="setCategory(c)" [class.active]="selected===c">{{ c }}</button>
+</section>
+
+<section class="grid">
+  <div class="card" *ngFor="let p of filtered">
+    <div class="card-media">
+      <img [src]="productImage(p)" (error)="imgError($event)" [alt]="p.title"/>
+    </div>
+    <div class="card-body">
+      <h3>{{ p.title }}</h3>
+      <p class="desc">{{ p.description }}</p>
+      <div class="price">{{ (p.priceCents || 0) / 100 | currency:(p.currency || 'CHF'):'symbol':'1.2-2':'de-CH' }}</div>
+      <div class="actions">
+        <button type="button" class="btn" (click)="addToCart(p)">In den Warenkorb</button>
+      </div>
+    </div>
+  </div>
+  <div class="empty-state" *ngIf="filtered.length === 0">
+    Es sind keine Produkte in dieser Kategorie verfügbar
+  </div>
+</section>
