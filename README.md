@@ -16,6 +16,10 @@ This repository contains a scaffold for a production-ready E‑Commerce platform
 
 Note: This is a base setup. Domain entities, APIs, Stripe integration, admin UI, tests, and full i18n/SEO will be implemented incrementally.
 
+## Documentation
+- The canonical documentation lives in the docs folder. Start here: docs/README.md
+- Deutsche Nachweise inkl. Kompetenzraster (M324): docs/m324_kompetenzraster.md
+
 ## Quick Start (Docker Compose)
 
 1. Create .env at repo root (already provided as example):
