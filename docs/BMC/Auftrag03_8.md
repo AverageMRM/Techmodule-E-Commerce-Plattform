@@ -1,15 +1,12 @@
 # Auftrag 03.8 – Risiken (Kopfstand → Massnahmen)
 
 ## So scheitern wir sicher …
-- Scope unklar, Termine rutschen, Qualitätsmängel im Checkout.
-- DSG/DSGVO ignoriert, Consent fehlt → rechtliche Risiken.
-- Keine Performance-Budgets → langsamer Shop, SEO-Einbrüche.
-- Doku/Backups fehlen, Bus-Faktor 1.
-- Kein Go-to-Market nach Launch → Shop bleibt unsichtbar.
+- Unklarer Scope/Termine; Checkout-Fehler; fehlende Consent/Rechtstexte.
+- Keine Performance-Budgets → langsamer Shop, SEO-Einbruch.
+- Bus-Faktor 1, fehlende Doku/Backups; kein Go-to-Market.
 
 ## Gegenmassnahmen
-- **Scope & DoD:** Akzeptanzkriterien + Change-Request-Prozess.
-- **Compliance:** Legal-Check, Consent-Tests, Privacy-Checkliste.
-- **Qualität & Performance:** Testmatrix (Zahlarten/Versand), Lighthouse-Budgets, Monitoring & Backups.
-- **Organisation:** Wissensdatenbank, On-Call-Regeln, Partnernetz für Spitzen.
-- **GTM:** Launch-Checkliste, Content-Plan, Case-Studies, Referral-Programm.
+- **DoD & Change-Prozess**, Akzeptanzkriterien, Testmatrix (Zahlarten/Versand).
+- **Legal-Checkliste & Consent-Tests**, Privacy-Review vor Go-Live.
+- **Lighthouse-Budgets & Monitoring**, Backups, Wissensdatenbank.
+- **GTM-Plan:** Launch-Checkliste, Case-Studies, Referral-Programm, Webinare.

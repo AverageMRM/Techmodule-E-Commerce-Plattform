@@ -6,7 +6,7 @@
 - **Transparente Kommunikation:** Klarer Scope, Definition of Done, Demo-basierte Abnahme.
 
 ## Gezielter Ausbau
-- **Conversion-Optimierung:** A/B-Tests, Trust-Elemente, PDP-Optimierung.
+- **Conversion-Optimierung:** A/B-Tests (Split-Tests), Trust-Elemente, PDP-Optimierung.
 - **Marketing-Automation:** Segmente, Trigger-Mails, Warenkorb-Reminder.
 - **Drittsysteme:** Standards für ERP/Marktplatz-Anbindungen, wiederverwendbare Connectoren.
 

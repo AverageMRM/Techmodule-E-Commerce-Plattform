@@ -1,22 +1,20 @@
-# Auftrag 03.2 – Vertrieb & Kommunikation
+# Auftrag 03.2 – Vertrieb & Kommunikation (teamfokussiert)
 
-## Vertriebsmodell
-- **Direkt (B2B):** Website-Lead → Erstgespräch → fixe Offerte (klarer Scope, „ab“-Preis) → Demo → Auftrag.
-- **Partnergestützt (B2B2B):** Agenturen/ERP-Integratoren beziehen uns für E-Commerce-Projekte bei.
-- **Kein physischer Shop:** Umsetzung remote; Vor-Ort-Workshops optional.
+## Unser Vertriebsweg (wer macht was)
+- **Account & Beratung (Luka):** Erstkontakt, Needs-Check, Angebot mit Scope/Zeitleiste.
+- **Solution/Demo (Tech-Team):** Live-Demo, Machbarkeitscheck, Aufwandsschätzung.
+- **Delivery Lead:** Kick-off, Meilensteine, Abnahme, Übergabe an Care-Plan.
 
-## Kontaktpunkte & Lead-Qualifizierung
-- **Website/Landingpage:** Nutzenversprechen, Paketpreise, Referenzen, Demo-Zugang.
-- **30-min Needs-Check:** Scope schärfen, Datenlage prüfen (CSV), Payment/Steuern/Versand klären.
-- **Demo/Proof:** Klickbare Beispiele & Back-Office-Einblicke (Suche/Filter, Checkout, Reports).
+**Modell:** Direktvertrieb (B2B) + ausgewählte Partner (Agenturen/ERP) für Leads & Integrationen.
 
-## Kommunikationskanäle
-- **Pull:** SEO-Seiten (z. B. „TWINT integrieren“, „Shop erstellen lassen“), Case-Studies, Checklisten.
-- **Push:** LinkedIn-Posts, Webinare, Kurzvideos, gezielte Outreach-Mails an KMU/Verbände.
-- **Mundpropaganda:** Referral-Incentives (z. B. Support-Tag bei erfolgreicher Empfehlung).
-- **Bewusstes Nicht-Kommunizieren:** Kein Spam oder Rabatt-Schlachten – klare Inhalte zu Scope, Zeit, Preis & Qualität.
+## Wie wir kommunizieren (unser Vorgehen – nicht nur Tools)
+- **Website & Case-Pages:** Nutzenversprechen, Scope, „ab“-Preise, Demo-Screencasts.
+- **LinkedIn-Teambrand:** 2 Posts/Woche (Milestones, Before/After, 1×/Monat Fachpost zu SEO/Checkout/CH-Steuern).
+- **Webinare/Workshops (vierteljährlich):** z. B. TWINT, Versandprofile CH, Performance-Budgets.
+- **Partner-Enablement:** One-Pager, gemeinsame Demos, Referral-Share.
+- **Onboarding:** Kick-off-Deck, Checklisten (CSV, Rechtstexte), DoD & Akzeptanzkriterien.
 
-## Beispiele (Strategie-Anleihen)
-- **DeepL:** Selbsterklärende Landingpage mit sofort erkennbarem Nutzen.
-- **Tupperware (modernisiert):** Live-Demos/Webinare statt Home-Partys.
-- **Zara:** Schnelle Time-to-Market durch fokussierten Scope.
+## Wie Kund:innen beim Verkauf mithelfen
+- **Referral-Bonus:** +1 Support-Tag bei erfolgreicher Empfehlung.
+- **Case-Study gemeinsam:** Kunde liefert 3 KPIs; wir produzieren Story & Visuals.
+- **Co-Webinar mit Kunde:** 20 min Use-Case + 10 min Q&A → Social Proof.
