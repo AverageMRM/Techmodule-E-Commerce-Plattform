@@ -12,7 +12,7 @@ The focus is on **local developer workflow on Windows** and alignment with our r
 
 **Technology overview**
 
-- **Backend:** Spring Boot 3 (Java 21), JUnit 5, Spring Test, Mockito
+- **Backend:** Spring Boot 3 (Java 25), JUnit 5, Spring Test, Mockito
 - **Frontend:** Angular 20, Jasmine/Karma unit tests
 - **E2E:** Playwright (planned/basic scaffold)
 - **Orchestration:** Docker Compose for local dev (not needed for unit tests)
@@ -203,7 +203,7 @@ The diagram below summarises the components:
                                               |   (Stripe / mock)|
                                               +------------------+
 
-
+```
 
 
 ### Context description
@@ -388,8 +388,7 @@ Releases are tagged `vX.Y.Z` (e.g. `v1.0.0`).
 
 Required tools on the developer machine:
 
-- Windows 10 or 11
-- Java 21 (JDK)
+- Java 25 (JDK)
 - Maven 3.9+
 - Node.js and npm (matching Angular CLI requirements)
 - Docker Desktop (for optional database and full stack)
